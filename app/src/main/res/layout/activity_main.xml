@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/toolbar"/>
+    </com.google.android.material.appbar.AppBarLayout>
+    <ProgressBar
+        android:layout_width="95dp"
+        android:id="@+id/progressBar"
+        android:layout_height="85dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:scrollbars="vertical"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/recyclerView"/>
+
+
+
+
+   <!-- <EditText
+        android:id="@+id/username_id"
+        android:hint="user name"
+        android:layout_marginTop="20dp"
+       android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+<EditText
+    android:id="@+id/email_id"
+    android:hint="email"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/adress_id"
+        android:hint="adress"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/submit_id"
+        android:layout_width="match_parent"
+        android:text="Registrer"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+
+        android:id="@+id/edite_id"
+        android:layout_width="wrap_content"
+        android:text="Edit"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"/>
+    <Button
+
+        android:id="@+id/delete_id"
+        android:layout_width="wrap_content"
+        android:text="Delete"
+        android:layout_marginTop="10dp"
+
+        android:layout_height="wrap_content"/>
+
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:text="Add Food"
+        android:textSize="60dp"
+       android:layout_marginLeft="56dp"
+        android:layout_marginTop="10dp"
+        android:onClick="addfood"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:text="Sign up"
+        android:textSize="60dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="10dp"
+        android:onClick="Signup"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:text="Sign IN"
+        android:textSize="60dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="10dp"
+        android:onClick="Sign_In"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/data_of_usrs"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:layout_height="match_parent">
+
+    </EditText>-->
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+

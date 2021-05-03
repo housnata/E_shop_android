@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.myapplication.ADAPTER.AdapterProduct;
+import com.example.myapplication.Activity.ProductsingleActivity;
 import com.example.myapplication.Activity.SignInActivity;
 import com.example.myapplication.Activity.SignupActivity;
 import com.example.myapplication.models.ProductModel;
@@ -64,22 +67,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context=this;
+
         initToolbar();
 
         getdata();
+        //first part
 
-        /*bind_views();
-        get_online_data();
-*/
+        bind_views();
+       get_online_data();
+
 
         // Create a new user with a first and last name
-       /* Map<String, Object> user = new HashMap<>();
+        Map<String, Object> user = new HashMap<>();
         user.put("first", "Ada");
         user.put("last", "Lovelace");
-        user.put("born", 1815);*/
+        user.put("born", 1815);
 
 // Add a new document with a generated ID
-       /* db.collection("users")
+      db.collection("users")
                 .add(user)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -92,8 +97,31 @@ public class MainActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error adding document", e);
                     }
-                });*/
+                });
     }
+// CREATE option
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_cart){
+            Toast.makeText(this,"you click on the cart",Toast.LENGTH_SHORT).show();
+
+        }else if (item.getItemId() == R.id.add_product){
+            Toast.makeText(this,"you click on add product",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(getApplicationContext(),item.getTitle(),Toast.LENGTH_SHORT).show();
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    //second part
     FirebaseFirestore Fb= FirebaseFirestore.getInstance();
 List<ProductModel> products=new ArrayList<>();
     private void getdata() {
@@ -130,7 +158,10 @@ List<ProductModel> products=new ArrayList<>();
        madapter.setOnItemClickListener(new AdapterProduct.OnItemClickListener() {
             @Override
             public void onItemClick(View view, ProductModel obj, int position) {
-                Intent i = new Intent(MainActivity.this, AddFoodActivity.class);
+            /*    Intent i = new Intent(MainActivity.this, AddFoodActivity.class);
+                i.putExtra("id", obj.product_id);
+                MainActivity.this.startActivity(i);*/
+                Intent i = new Intent(MainActivity.this, ProductsingleActivity.class);
                 i.putExtra("id", obj.product_id);
                 MainActivity.this.startActivity(i);
             }
@@ -142,7 +173,7 @@ List<ProductModel> products=new ArrayList<>();
             recyvleview= (RecyclerView) findViewById(R.id.recyclerView);
             recyvleview.setVisibility(View.GONE);
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            toolbar.setNavigationIcon(R.drawable.ic_menu);
+            toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
             setSupportActionBar(toolbar);
             getSupportActionBar().setTitle("chebli shop");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -162,7 +193,8 @@ List<ProductModel> products=new ArrayList<>();
     private void setSupportActionBar(Toolbar toolbar) {
     }
 
-   /* private void get_online_data() {
+    //first part
+ private void get_online_data() {
         Toast.makeText(this,"Loading",Toast.LENGTH_SHORT).show();
         db.collection(main).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -195,13 +227,13 @@ List<ProductModel> products=new ArrayList<>();
 
     private void bind_views() {
       progressDialog = new ProgressDialog(context);
-        username_id=findViewById(R.id.username_id);
+        /*username_id=findViewById(R.id.username_id);
         email_id=findViewById(R.id.email_id);
         adress_id=findViewById(R.id.adress_id);
         submit_id=findViewById(R.id.submit_id);
         delete_id=findViewById(R.id.delete_id);
         edite_id=findViewById(R.id.edite_id);
-        data_of_usrs=findViewById(R.id.data_of_usrs);
+        data_of_usrs=findViewById(R.id.data_of_usrs);*/
         delete_id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -231,9 +263,9 @@ List<ProductModel> products=new ArrayList<>();
         submit_id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               *//* new_user.username=username_id.getText().toString();
+              new_user.username=username_id.getText().toString();
                 new_user.adress=adress_id.getText().toString();
-                new_user.email=email_id.getText().toString();*//*
+                new_user.email=email_id.getText().toString();
                 submit_data();
 
 
@@ -309,5 +341,6 @@ List<ProductModel> products=new ArrayList<>();
     public void Sign_In(View view) {
         Intent intent=new Intent(this, SignInActivity.class);
         this.startActivity(intent);
-    }*/
+    }
+
 }

@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -26,8 +27,9 @@
 
 
 
+<!--
 
-   <!-- <EditText
+  <EditText
         android:id="@+id/username_id"
         android:hint="user name"
         android:layout_marginTop="20dp"
@@ -110,7 +112,7 @@
         android:layout_margin="20dp"
         android:layout_height="match_parent">
 
-    </EditText>-->
+    </EditText-->>
     </LinearLayout>
 
 

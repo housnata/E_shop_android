@@ -26,6 +26,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.myapplication.ADAPTER.AdapterProduct;
+import com.example.myapplication.Activity.CheckoutActivity;
 import com.example.myapplication.Activity.ProductsingleActivity;
 import com.example.myapplication.Activity.SignInActivity;
 import com.example.myapplication.Activity.SignupActivity;
@@ -109,7 +110,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_cart){
-            Toast.makeText(this,"you click on the cart",Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(this, CheckoutActivity.class);
+            this.startActivity(intent);
+            //Toast.makeText(this,"you click on the cart",Toast.LENGTH_SHORT).show();
 
         }else if (item.getItemId() == R.id.add_product){
             Toast.makeText(this,"you click on add product",Toast.LENGTH_SHORT).show();

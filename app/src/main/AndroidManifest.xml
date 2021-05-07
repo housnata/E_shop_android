@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".Activity.ProductsingleActivity"></activity>
+        <activity android:name=".Activity.ConfirmAdressInformationActivity"></activity>
+        <activity android:name=".Activity.CheckoutActivity" />
+        <activity android:name=".Activity.ProductsingleActivity" />
         <activity android:name=".Activity.SignInActivity" /> <!-- Use this attribute verbatim -->
         <meta-data
             android:name="DATABASE"

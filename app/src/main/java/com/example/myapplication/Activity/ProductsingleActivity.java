@@ -15,43 +15,49 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.StringSignature;
 import com.example.myapplication.R;
+import com.example.myapplication.models.CartModel;
 import com.example.myapplication.models.ProductModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.orm.SugarDb;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsingleActivity extends AppCompatActivity {
-    String id=null;
+    String id = null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        context= this;
+        context = this;
+       /* SugarDb db=new SugarDb(this);
+        db.onCreate(db.getDB());*/
         bind_view();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productsingle);
-        Intent intent=getIntent();
-      id=  intent.getStringExtra("id");
-      if (id==null||id.length()<1){
-          Toast.makeText(this,"ID IS NOT FOUND",Toast.LENGTH_SHORT).show();
-          finish();
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
+        if (id == null || id.length() < 1) {
+            Toast.makeText(this, "ID IS NOT FOUND", Toast.LENGTH_SHORT).show();
+            finish();
 
-      }
-      get_data();
+        }
+        get_data();
     }
-ImageView product_image;
-    TextView product_title,product_price,product_details;
+
+    ImageView product_image;
+    TextView product_title, product_price, product_details;
     Button add_to_cart;
+
     private void bind_view() {
-        product_image=   findViewById(R.id.product_image);
-        product_title=   findViewById(R.id.product_title);
-        product_price=   findViewById(R.id.product_price);
-        product_details=   findViewById(R.id.product_details);
-        add_to_cart=   findViewById(R.id.add_to_cart);
+        product_image = findViewById(R.id.product_image);
+        product_title = findViewById(R.id.product_title);
+        product_price = findViewById(R.id.product_price);
+        product_details = findViewById(R.id.product_details);
+        add_to_cart = findViewById(R.id.add_to_cart);
     }
 
     private void feed_data() {
@@ -62,37 +68,57 @@ ImageView product_image;
                 .centerCrop()
                 .into(product_image);
         product_title.setText(product.title);
-        product_price.setText(product.price +"");
-        product_details.setText(product.product_details +"");
+        product_price.setText(product.price + "");
+        product_details.setText(product.product_details + "");
         add_to_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,"Adding to cart",Toast.LENGTH_SHORT).show();
+                add_product_to_cart();
+               // Toast.makeText(context, "Adding to cart", Toast.LENGTH_SHORT).show();
             }
         });
     }
-    FirebaseFirestore db= FirebaseFirestore.getInstance();
-    ProductModel product=new ProductModel();
+
+    private void add_product_to_cart() {
+        CartModel cartitem=new CartModel();
+        cartitem.product_id=product.product_id;
+        cartitem.product_image=product.title;
+        cartitem.product_price=product.price+"";
+        cartitem.product_image=product.image;
+        cartitem.quantity=1;
+        try {
+            CartModel.save(cartitem);
+           // cartitem.save();
+            Toast.makeText(context, "product added to cart", Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toast.makeText(context, "fail to save because"+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    ProductModel product = new ProductModel();
     Context context;
-   /* List<ProductModel> products=new ArrayList<>();*/
+
+    /* List<ProductModel> products=new ArrayList<>();*/
     private void get_data() {
         db.collection("PRODUCTS").document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()){
-                    Toast.makeText(context,"product is not found",Toast.LENGTH_SHORT).show();
+                if (documentSnapshot.exists()) {
+                    Toast.makeText(context, "product is not found", Toast.LENGTH_SHORT).show();
                     finish();
                     return;
                 }
-                product=documentSnapshot.toObject(ProductModel.class);
-            feed_data();
+                product = documentSnapshot.toObject(ProductModel.class);
+                feed_data();
             }
 
 
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(context,"IS NOT FOUND BECOUSE"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "IS NOT FOUND BECOUSE" + e.getMessage(), Toast.LENGTH_SHORT).show();
                 finish();
                 return;
             }

@@ -27,7 +27,7 @@
 
 
 
-<!--
+
 
   <EditText
         android:id="@+id/username_id"
@@ -112,7 +112,7 @@
         android:layout_margin="20dp"
         android:layout_height="match_parent">
 
-    </EditText-->>
+    </EditText>
     </LinearLayout>
 
 

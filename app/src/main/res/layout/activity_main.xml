@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
+<!--
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,13 +18,13 @@
         android:layout_height="85dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:scrollbars="vertical"/>
-    <androidx.recyclerview.widget.RecyclerView
+        android:scrollbars="vertical"/>-->
+  <!--  <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/recyclerView"/>
-
+-->
 
 
 
@@ -84,7 +84,7 @@
     <Button
         android:layout_width="wrap_content"
         android:text="Add Food"
-        android:textSize="60dp"
+        android:textSize="30dp"
        android:layout_marginLeft="56dp"
         android:layout_marginTop="10dp"
         android:onClick="addfood"
@@ -92,7 +92,7 @@
     <Button
         android:layout_width="wrap_content"
         android:text="Sign up"
-        android:textSize="60dp"
+        android:textSize="30dp"
         android:layout_marginLeft="56dp"
         android:layout_marginTop="10dp"
         android:onClick="Signup"
@@ -100,7 +100,7 @@
     <Button
         android:layout_width="wrap_content"
         android:text="Sign IN"
-        android:textSize="60dp"
+        android:textSize="30dp"
         android:layout_marginLeft="56dp"
         android:layout_marginTop="10dp"
         android:onClick="Sign_In"

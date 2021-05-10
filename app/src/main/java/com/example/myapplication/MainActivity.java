@@ -69,13 +69,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context=this;
 
-        initToolbar();
+        /*initToolbar();*/
 
         getdata();
         //first part
 
         bind_views();
-       get_online_data();
+      /* get_online_data();*/
 
 
         // Create a new user with a first and last name
@@ -132,19 +132,19 @@ List<ProductModel> products=new ArrayList<>();
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 products = queryDocumentSnapshots.toObjects(ProductModel.class);
-                initComponents();
+               /* initComponents();*/
             }
 
 
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                initComponents();
+               /* initComponents();*/
             }
         });
     }
     ProgressBar progressBar;
-    private void initComponents() {
+   /* private void initComponents() {
         recyvleview.setLayoutManager(new GridLayoutManager(this, 2));
         //recyclerView.addItemDecoration(new SpacingItemDecoration(2, Tools.dpToPx(this, 8), true));
        recyvleview.setHasFixedSize(true);
@@ -161,18 +161,18 @@ List<ProductModel> products=new ArrayList<>();
        madapter.setOnItemClickListener(new AdapterProduct.OnItemClickListener() {
             @Override
             public void onItemClick(View view, ProductModel obj, int position) {
-            /*    Intent i = new Intent(MainActivity.this, AddFoodActivity.class);
-                i.putExtra("id", obj.product_id);
-                MainActivity.this.startActivity(i);*/
-                Intent i = new Intent(MainActivity.this, ProductsingleActivity.class);
+             Intent i = new Intent(MainActivity.this, AddFoodActivity.class);
                 i.putExtra("id", obj.product_id);
                 MainActivity.this.startActivity(i);
+               *//* Intent i = new Intent(MainActivity.this, ProductsingleActivity.class);
+                i.putExtra("id", obj.product_id);
+                MainActivity.this.startActivity(i);*//*
             }
         });
-    }
-    private void initToolbar() {
+    }*/
+   /* private void initToolbar() {
         try {
-            progressBar = findViewById(R.id.progressBar);
+            *//*progressBar = findViewById(R.id.progressBar);*//*
             recyvleview= (RecyclerView) findViewById(R.id.recyclerView);
             recyvleview.setVisibility(View.GONE);
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -184,7 +184,7 @@ List<ProductModel> products=new ArrayList<>();
         } catch (Exception e) {
 
         }
-    }
+    }*/
     public static void setSystemBarColor(Activity act) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = act.getWindow();
@@ -230,13 +230,13 @@ List<ProductModel> products=new ArrayList<>();
 
     private void bind_views() {
       progressDialog = new ProgressDialog(context);
-        /*username_id=findViewById(R.id.username_id);
+        username_id=findViewById(R.id.username_id);
         email_id=findViewById(R.id.email_id);
         adress_id=findViewById(R.id.adress_id);
         submit_id=findViewById(R.id.submit_id);
         delete_id=findViewById(R.id.delete_id);
         edite_id=findViewById(R.id.edite_id);
-        data_of_usrs=findViewById(R.id.data_of_usrs);*/
+        data_of_usrs=findViewById(R.id.data_of_usrs);
         delete_id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

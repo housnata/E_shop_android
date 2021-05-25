@@ -40,7 +40,7 @@
         android:layout_marginTop="40dp"
         android:padding="50dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_baseline_person_24" />
+         />
 
     <EditText
         android:id="@+id/book_title"
